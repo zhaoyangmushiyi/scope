@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.supermap</groupId>
+    <artifactId>scope</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <iserver.version>10.2.1-20703</iserver.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.supermap.ibase</groupId>
+            <artifactId>service-model</artifactId>
+            <version>${iserver.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/service-model-10.2.1-20703.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.supermap</groupId>
+            <artifactId>iserver-all</artifactId>
+            <version>${iserver.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/iserver-all-10.2.1-20703.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.transwarp.shiva2</groupId>
+            <artifactId>shiva-client-shade</artifactId>
+            <version>SHIVA-UNDEFINED-VERSOIN</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/shiva-client-shade-SHIVA-UNDEFINED-VERSOIN.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>io.transwarp.shiva2</groupId>
+            <artifactId>shiva-common</artifactId>
+            <version>SHIVA-UNDEFINED-VERSOIN</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/shiva-common-SHIVA-UNDEFINED-VERSOIN.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/json-20200518.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.78</version>
+        </dependency>
+    </dependencies>
+
+</project>
