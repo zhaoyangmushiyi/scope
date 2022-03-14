@@ -63,18 +63,19 @@ public class ScopeHelper {
         ShivaClient client = ShivaClient.getInstance();
         try {
             client.start(options);
+            this.client = client;
+            ShivaContext<Map<String, ShivaDatabase>> mapShivaContext = client.listDatabases();
+            Map<String, ShivaDatabase> resource = mapShivaContext.getResource();
+            Set<String> databaseNames = resource.keySet();
+            if (!databaseNames.contains(TILE_DATABASE_NAME)) {
+                Map<String, ShivaCustomProperty> customProperties = new HashMap<>();
+                client.createDatabase(TILE_DATABASE_NAME, customProperties);
+            }
+            return client;
         } catch (ShivaException e) {
             e.printStackTrace();
         }
-        this.client = client;
-        ShivaContext<Map<String, ShivaDatabase>> mapShivaContext = client.listDatabases();
-        Map<String, ShivaDatabase> resource = mapShivaContext.getResource();
-        Set<String> databaseNames = resource.keySet();
-        if (!databaseNames.contains(TILE_DATABASE_NAME)) {
-            Map<String, ShivaCustomProperty> customProperties = new HashMap<>();
-            client.createDatabase(TILE_DATABASE_NAME, customProperties);
-        }
-        return client;
+        return null;
     }
 
     /**
