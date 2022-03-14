@@ -60,21 +60,31 @@ public class ScopeHelper {
         String serverAddresses = scopeTileSourceInfo.serverAddresses;
         Options options = new Options();
         options.masterGroup = serverAddresses;
+        options.maxErrorRetry = 5;
         ShivaClient client = ShivaClient.getInstance();
         try {
             client.start(options);
             this.client = client;
             ShivaContext<Map<String, ShivaDatabase>> mapShivaContext = client.listDatabases();
+            if (!mapShivaContext.getStatus().ok()) {
+                client.close();
+                return null;
+            }
             Map<String, ShivaDatabase> resource = mapShivaContext.getResource();
             Set<String> databaseNames = resource.keySet();
             if (!databaseNames.contains(TILE_DATABASE_NAME)) {
                 Map<String, ShivaCustomProperty> customProperties = new HashMap<>();
-                client.createDatabase(TILE_DATABASE_NAME, customProperties);
+                Status status = client.createDatabase(TILE_DATABASE_NAME, customProperties);
+                if (!status.ok()) {
+                    client.close();
+                    return null;
+                }
             }
             return client;
         } catch (ShivaException e) {
             e.printStackTrace();
         }
+        client.close();
         return null;
     }
 
