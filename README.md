@@ -1,6 +1,6 @@
 # SuperMap iserver拓展Transwarp Scope 2.0
 
-## 集成至iserver
+## 集成至iserver 10.2.1
 
 ### 生成jar
 
@@ -10,7 +10,7 @@
 
 ### 配置使用Scope的存储位置
 
-打开系统配置文件 `iserver-system.xml`（位于`%SuperMap  iServer_HOME%/webapps/iserver/WEB-INF`） ，在<storages>节点下添加存储  ID（可自行命名，本例为 `Scope`）和瓦片存储位置的配置。
+打开系统配置文件 `iserver-system.xml`（位于`%SuperMap  iServer_HOME%/webapps/iserver/WEB-INF`） ，在<storages>节点下添加存储  ID（可自行命名，本例为 `Scope`）和瓦片存储位置的配置，需要指定serverAddresses为Scope数据库Master Address的。
 
 示例： 
 
